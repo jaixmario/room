@@ -77,15 +77,22 @@ body {
   width: 0;
 }
 label {
-  position: fixed;
+  position: absolute; /* Change to absolute for easier stacking */
   z-index: 100;
-  right: 1rem;
-  bottom: 1rem;
+  right: 1rem; /* Keep buttons aligned to the right */
+  top: calc(1rem + (var(--index) * 60px)); /* Stacks buttons vertically */
   border-radius: 50%;
   height: 44px;
   width: 44px;
   cursor: pointer;
-  transform: translate3d(0, 0, 50vmin) translate(0, calc((var(--index) * -100%) + (var(--index) * -10px)));
+}
+
+@media (max-width: 480px) {
+  label {
+    height: 50px; /* Adjust size for small screens */
+    width: 50px;
+    top: calc(1rem + (var(--index) * 70px)); /* Adjust spacing for mobile */
+  }
 }
 svg {
   height: 28px;
